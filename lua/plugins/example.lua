@@ -75,8 +75,6 @@ return {
       },
     },
   },
-
-  -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -112,7 +110,16 @@ return {
   },
   {
     "lopi-py/luau-lsp.nvim",
-    opts = {},
+    opts = {
+      settings = {
+        luau_lsp = {
+          types = {
+            robloxSecurityLevel = "PluginSecurity",
+            definitionFiles = { vim.fn.expand("~/.config/nvim/roblox-types.d.luau") },
+          },
+        },
+      },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
